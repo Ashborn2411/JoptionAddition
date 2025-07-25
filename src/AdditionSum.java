@@ -1,15 +1,47 @@
+import javax.swing.*;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class AdditionSum {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    private  int first,second;
+    public int getfirst(){
+        return  first;
+    }
+    public int getsecond(){
+       return  second;
+    }
+    public void setfirst(String s){
+        this.first=Integer.parseInt(s);
+    }
+    public void setsecond(String s){
+        this.second=Integer.parseInt(s);
+    }
+    public int getSum(){
+        return  getfirst()+getsecond();
+    }
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+     public  void doSum(){
+        try{
+            String first=JOptionPane.showInputDialog(UtilString.firstmessage);
+            String second=JOptionPane.showInputDialog(UtilString.secondmessage);
+            setfirst(first);
+            setsecond(second);
+            JOptionPane.showMessageDialog(null ,
+                    UtilString.summessage+getSum(),
+                    UtilString.titlemessage,
+                    JOptionPane.PLAIN_MESSAGE);
+        }catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null,
+                    UtilString.inputError,
+                    UtilString.invalidInput
+                    ,
+                    JOptionPane.ERROR_MESSAGE);
+
+        }
+
+     }
+    public static void main(String[] args) {
+         AdditionSum additionSum=new AdditionSum();
+         additionSum.doSum();
         }
     }
-}
